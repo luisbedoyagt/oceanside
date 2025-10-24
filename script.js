@@ -1,4 +1,3 @@
-// --- Filtrado de casas ---
 function buscarCasa() {
   const input = document.getElementById('searchInput').value.toLowerCase();
   const cards = document.querySelectorAll('.card');
@@ -10,7 +9,6 @@ function buscarCasa() {
   });
 }
 
-// --- Mostrar detalle en modal ---
 function mostrarDetalle(nombre, destino, precio, imagen) {
   document.getElementById('modal-nombre').innerText = nombre;
   document.getElementById('modal-destino').innerText = destino;
@@ -19,12 +17,10 @@ function mostrarDetalle(nombre, destino, precio, imagen) {
   document.getElementById('modal').style.display = 'flex';
 }
 
-// --- Cerrar modal ---
 function cerrarModal() {
   document.getElementById('modal').style.display = 'none';
 }
 
-// --- Cerrar al hacer clic fuera del modal ---
 window.onclick = function(e) {
   const modal = document.getElementById('modal');
   if (e.target === modal) {
