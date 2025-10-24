@@ -1,9 +1,20 @@
 const properties = [
-  {id:'p1',title:'Chalet Vista Sol',location:'Playa Linda',lat:14.6205,lng:-90.5280,pricePerNight:120,img:'img/casa1.jpg',desc:'Terraza con vista al mar, 3 hab, piscina pequeña y parrilla.'},
-  {id:'p2',title:'Casa Brisa Marina',location:'Costa Dorada',lat:14.6220,lng:-90.5345,pricePerNight:200,img:'img/casa2.jpg',desc:'Piscina privada, jardín amplio y cocina equipada.'},
-  {id:'p3',title:'Cabaña El Faro',location:'Bahía Azul',lat:14.6152,lng:-90.5201,pricePerNight:80,img:'img/casa3.jpg',desc:'Acogedora, ideal para parejas, a 1 minuto de la playa.'},
-  {id:'p4',title:'Villa Coral',location:'Rincón del Mar',lat:14.6300,lng:-90.5400,pricePerNight:320,img:'img/casa4.jpg',desc:'Lujo discreto: 4 hab, piscina infinita y servicio opcional.'}
+  {id:'p1',title:'Chalet Vista Sol',location:'Playa Linda',lat:14.6205,lng:-90.5280,pricePerNight:120,
+   imgs:['img/casa1-1.jpg','img/casa1-2.jpg','img/casa1-3.jpg'],
+   desc:'Terraza con vista al mar, 3 hab, piscina pequeña y parrilla.'},
+  {id:'p2',title:'Casa Brisa Marina',location:'Costa Dorada',lat:14.6220,lng:-90.5345,pricePerNight:200,
+   imgs:['img/casa2-1.jpg','img/casa2-2.jpg','img/casa2-3.jpg'],
+   desc:'Piscina privada, jardín amplio y cocina equipada.'},
+  {id:'p3',title:'Cabaña El Faro',location:'Bahía Azul',lat:14.6152,lng:-90.5201,pricePerNight:80,
+   imgs:['img/casa3-1.jpg','img/casa3-2.jpg','img/casa3-3.jpg'],
+   desc:'Acogedora, ideal para parejas, a 1 minuto de la playa.'},
+  {id:'p4',title:'Villa Coral',location:'Rincón del Mar',lat:14.6300,lng:-90.5400,pricePerNight:320,
+   imgs:['img/casa4-1.jpg','img/casa4-2.jpg','img/casa4-3.jpg'],
+   desc:'Lujo discreto: 4 hab, piscina infinita y servicio opcional.'}
 ];
+
+let currentModalImgs = [];
+let currentImgIndex = 0;
 
 document.addEventListener('DOMContentLoaded',()=>{
   const list=document.getElementById('propList');
@@ -21,7 +32,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const card=document.createElement('div');
     card.className='card';
     card.innerHTML=`
-      <img src="${p.img}" alt="${p.title}">
+      <img src="${p.imgs[0]}" alt="${p.title}">
       <div class="card-body">
         <div class="card-title">${p.title}</div>
         <div class="card-loc">${p.location}</div>
@@ -42,44 +53,21 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   document.getElementById('currentYear').textContent=new Date().getFullYear();
 
-  const btnToggle=document.getElementById('btn-toggle');
-  const nav=document.getElementById('main-nav');
-  btnToggle.addEventListener('click',()=>nav.classList.toggle('open'));
-
-  document.getElementById('btnCalc').addEventListener('click',calculateQuote);
-  document.getElementById('btnWhats').addEventListener('click',sendQuoteWhats);
-  document.getElementById('modalClose').addEventListener('click',closeModal);
-  document.getElementById('modalWhats').addEventListener('click',sendModalWhats);
+  document.getElementById('btnCalc').addEventListener('click',calcQuote);
+  document.getElementById('btnWhats').addEventListener('click',sendQuote);
+  document.getElementById('modalClose').addEventListener('click',()=>{closeModal();});
+  document.getElementById('prevImg').addEventListener('click',()=>{prevImg();});
+  document.getElementById('nextImg').addEventListener('click',()=>{nextImg();});
+  document.getElementById('modalWhats').addEventListener('click',sendQuoteFromModal);
 });
 
-function mapUrl(lat,lng){return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;}
-
-function calculateQuote(){
-  const sel=document.getElementById('selProp').value;
-  const nights=parseInt(document.getElementById('inpNights').value)||1;
-  const guests=parseInt(document.getElementById('inpGuests').value)||1;
-  const prop=properties.find(p=>p.id===sel);
-  if(!prop) return;
-  const total=prop.pricePerNight*nights;
-  document.getElementById('totalPrice').textContent=`$${total}`;
-  document.getElementById('priceBreak').textContent=`${nights} noches x $${prop.pricePerNight}`;
-}
-
-function sendQuoteWhats(){
-  const sel=document.getElementById('selProp').value;
-  const nights=parseInt(document.getElementById('inpNights').value)||1;
-  const guests=parseInt(document.getElementById('inpGuests').value)||1;
-  const prop=properties.find(p=>p.id===sel);
-  if(!prop) return;
-  const total=prop.pricePerNight*nights;
-  const msg=`Hola! Me interesa la propiedad "${prop.title}" por ${nights} noches para ${guests} huésped(s). Total estimado: $${total}.`;
-  window.open(`https://wa.me/50255551234?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
+// MODAL
 function openModal(id){
   const p=properties.find(x=>x.id===id);
   if(!p) return;
-  document.getElementById('modalImg').src=p.img;
+  currentModalImgs=p.imgs;
+  currentImgIndex=0;
+  document.getElementById('modalImg').src=currentModalImgs[currentImgIndex];
   document.getElementById('modalTitle').textContent=p.title;
   document.getElementById('modalDesc').textContent=p.desc;
   document.getElementById('modalLocation').textContent=p.location;
@@ -93,8 +81,51 @@ function closeModal(){
   document.getElementById('modal').setAttribute('aria-hidden','true');
 }
 
-function sendModalWhats(){
-  const title=document.getElementById('modalTitle').textContent;
-  const msg=`Hola! Me interesa la propiedad "${title}".`;
-  window.open(`https://wa.me/50255551234?text=${encodeURIComponent(msg)}`, '_blank');
+function prevImg(){
+  if(currentModalImgs.length===0) return;
+  currentImgIndex=(currentImgIndex-1+currentModalImgs.length)%currentModalImgs.length;
+  document.getElementById('modalImg').src=currentModalImgs[currentImgIndex];
+}
+
+function nextImg(){
+  if(currentModalImgs.length===0) return;
+  currentImgIndex=(currentImgIndex+1)%currentModalImgs.length;
+  document.getElementById('modalImg').src=currentModalImgs[currentImgIndex];
+}
+
+function mapUrl(lat,lng){return `https://www.google.com/maps?q=${lat},${lng}`;}
+
+// COTIZADOR
+function calcQuote(){
+  const sel=document.getElementById('selProp').value;
+  const nights=parseInt(document.getElementById('inpNights').value)||1;
+  const guests=parseInt(document.getElementById('inpGuests').value)||1;
+  const p=properties.find(x=>x.id===sel);
+  if(!p) return;
+  const total=p.pricePerNight*nights;
+  document.getElementById('totalPrice').textContent=`$${total}`;
+  document.getElementById('priceBreak').textContent=`$${p.pricePerNight} x ${nights} noches`;
+}
+
+function sendQuote(){
+  calcQuote();
+  const sel=document.getElementById('selProp').value;
+  const nights=document.getElementById('inpNights').value;
+  const guests=document.getElementById('inpGuests').value;
+  const p=properties.find(x=>x.id===sel);
+  if(!p) return;
+  const total=p.pricePerNight*nights;
+  const msg=`Hola! Estoy interesado en ${p.title} para ${nights} noches y ${guests} huéspedes. Total estimado: $${total}.`;
+  const link=`https://wa.me/+50212341234?text=${encodeURIComponent(msg)}`;
+  window.open(link,'_blank');
+}
+
+function sendQuoteFromModal(){
+  const p=properties.find(x=>x.imgs===currentModalImgs);
+  const nights=document.getElementById('inpNights').value||1;
+  const guests=document.getElementById('inpGuests').value||1;
+  const total=(p? p.pricePerNight:0)*nights;
+  const msg=`Hola! Estoy interesado en ${p.title} para ${nights} noches y ${guests} huéspedes. Total estimado: $${total}.`;
+  const link=`https://wa.me/+50212341234?text=${encodeURIComponent(msg)}`;
+  window.open(link,'_blank');
 }
