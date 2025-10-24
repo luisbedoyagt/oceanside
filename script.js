@@ -5,24 +5,26 @@ const properties = [
   {id:'p4',title:'Villa Coral',location:'Rincón del Mar',lat:14.6300,lng:-90.5400,pricePerNight:320, imgs:['img/casa4.jpg','img/casa4-2.jpg','img/casa4-3.jpg'],desc:'Lujo discreto: 4 hab, piscina infinita y servicio opcional.'}
 ];
 
-let currentImgs=[],currentIndex=0;
+let currentImgs=[], currentIndex=0;
 
-document.addEventListener('DOMContentLoaded',()=>{
-  const list=document.getElementById('propList');
-  const selProp=document.getElementById('selProp');
-  const whatsappTop=document.getElementById('whatsappTop');
-  const whLink=document.getElementById('whLink');
-  const WHATSAPP_NUMBER='+50212341234';
-  const WHATSAPP_PHONE_LINK=`https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g,'')}`;
-  whatsappTop.href=WHATSAPP_PHONE_LINK;
-  whatsappTop.textContent='WhatsApp';
-  whLink.href=WHATSAPP_PHONE_LINK;
-  whLink.textContent=WHATSAPP_NUMBER;
+document.addEventListener('DOMContentLoaded', () => {
+  const list = document.getElementById('propList');
+  const selProp = document.getElementById('selProp');
+  const whatsappTop = document.getElementById('whatsappTop');
+  const whLink = document.getElementById('whLink');
+  const WHATSAPP_NUMBER = '+50212341234';
+  const WHATSAPP_PHONE_LINK = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g,'')}`;
 
-  properties.forEach(p=>{
-    const card=document.createElement('div');
-    card.className='card';
-    card.innerHTML=`
+  whatsappTop.href = WHATSAPP_PHONE_LINK;
+  whatsappTop.textContent = 'WhatsApp';
+  whLink.href = WHATSAPP_PHONE_LINK;
+  whLink.textContent = WHATSAPP_NUMBER;
+
+  // Cargar propiedades
+  properties.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
       <img src="${p.imgs[0]}" alt="${p.title}">
       <div class="card-body">
         <div class="card-title">${p.title}</div>
@@ -36,77 +38,79 @@ document.addEventListener('DOMContentLoaded',()=>{
     `;
     list.appendChild(card);
 
-    const opt=document.createElement('option');
-    opt.value=p.id;
-    opt.textContent=`${p.title} — $${p.pricePerNight}/noche`;
+    const opt = document.createElement('option');
+    opt.value = p.id;
+    opt.textContent = `${p.title} — $${p.pricePerNight}/noche`;
     selProp.appendChild(opt);
   });
 
-  document.getElementById('currentYear').textContent=new Date().getFullYear();
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-  const btnToggle=document.getElementById('btn-toggle');
-  const nav=document.getElementById('main-nav');
-  btnToggle.addEventListener('click',()=>nav.classList.toggle('open'));
+  // Toggle nav
+  const btnToggle = document.getElementById('btn-toggle');
+  const nav = document.getElementById('main-nav');
+  btnToggle.addEventListener('click', () => nav.classList.toggle('open'));
 
-  document.getElementById('btnCalc').addEventListener('click',calculateQuote);
-  document.getElementById('btnWhats').addEventListener('click',sendQuoteWhats);
-  document.getElementById('modalClose').addEventListener('click',closeModal);
-  document.getElementById('modalWhats').addEventListener('click',sendModalWhats);
-  document.getElementById('prevImg').addEventListener('click',()=>changeImg(-1));
-  document.getElementById('nextImg').addEventListener('click',()=>changeImg(1));
+  // Botones
+  document.getElementById('btnCalc').addEventListener('click', calculateQuote);
+  document.getElementById('btnWhats').addEventListener('click', sendQuoteWhats);
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalWhats').addEventListener('click', sendModalWhats);
+  document.getElementById('prevImg').addEventListener('click', () => changeImg(-1));
+  document.getElementById('nextImg').addEventListener('click', () => changeImg(1));
 });
 
-function mapUrl(lat,lng){return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;}
+function mapUrl(lat,lng){ return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`; }
 
 function calculateQuote(){
-  const sel=document.getElementById('selProp').value;
-  const nights=parseInt(document.getElementById('inpNights').value)||1;
-  const guests=parseInt(document.getElementById('inpGuests').value)||1;
-  const prop=properties.find(p=>p.id===sel);
+  const sel = document.getElementById('selProp').value;
+  const nights = parseInt(document.getElementById('inpNights').value) || 1;
+  const guests = parseInt(document.getElementById('inpGuests').value) || 1;
+  const prop = properties.find(p => p.id === sel);
   if(!prop) return;
-  const total=prop.pricePerNight*nights;
-  document.getElementById('totalPrice').textContent=`$${total}`;
-  document.getElementById('priceBreak').textContent=`${nights} noches x $${prop.pricePerNight}`;
+  const total = prop.pricePerNight * nights;
+  document.getElementById('totalPrice').textContent = `$${total}`;
+  document.getElementById('priceBreak').textContent = `${nights} noches x $${prop.pricePerNight}`;
 }
 
 function sendQuoteWhats(){
-  const sel=document.getElementById('selProp').value;
-  const nights=parseInt(document.getElementById('inpNights').value)||1;
-  const guests=parseInt(document.getElementById('inpGuests').value)||1;
-  const prop=properties.find(p=>p.id===sel);
+  const sel = document.getElementById('selProp').value;
+  const nights = parseInt(document.getElementById('inpNights').value) || 1;
+  const guests = parseInt(document.getElementById('inpGuests').value) || 1;
+  const prop = properties.find(p => p.id === sel);
   if(!prop) return;
-  const total=prop.pricePerNight*nights;
-  const msg=`Hola! Me interesa la propiedad "${prop.title}" por ${nights} noches para ${guests} huésped(s). Total estimado: $${total}.`;
-  window.open(`https://wa.me/50255551234?text=${encodeURIComponent(msg)}`, '_blank');
+  const total = prop.pricePerNight * nights;
+  const msg = `Hola! Me interesa la propiedad "${prop.title}" por ${nights} noches para ${guests} huésped(s). Total estimado: $${total}.`;
+  window.open(`https://wa.me/50212341234?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
 function openModal(id){
-  const p=properties.find(x=>x.id===id);
+  const p = properties.find(x => x.id === id);
   if(!p) return;
-  currentImgs=p.imgs;
-  currentIndex=0;
-  document.getElementById('modalImg').src=currentImgs[currentIndex];
-  document.getElementById('modalTitle').textContent=p.title;
-  document.getElementById('modalDesc').textContent=p.desc;
-  document.getElementById('modalLocation').textContent=p.location;
-  document.getElementById('mapLink').href=mapUrl(p.lat,p.lng);
-  document.getElementById('modal').style.display='flex';
+  currentImgs = p.imgs;
+  currentIndex = 0;
+  document.getElementById('modalImg').src = currentImgs[currentIndex];
+  document.getElementById('modalTitle').textContent = p.title;
+  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalLocation').textContent = p.location;
+  document.getElementById('mapLink').href = mapUrl(p.lat,p.lng);
+  document.getElementById('modal').style.display = 'flex';
   document.getElementById('modal').setAttribute('aria-hidden','false');
 }
 
 function changeImg(dir){
-  if(currentImgs.length<2) return;
-  currentIndex=(currentIndex+dir+currentImgs.length)%currentImgs.length;
-  document.getElementById('modalImg').src=currentImgs[currentIndex];
+  if(currentImgs.length < 2) return;
+  currentIndex = (currentIndex + dir + currentImgs.length) % currentImgs.length;
+  document.getElementById('modalImg').src = currentImgs[currentIndex];
 }
 
 function closeModal(){
-  document.getElementById('modal').style.display='none';
+  document.getElementById('modal').style.display = 'none';
   document.getElementById('modal').setAttribute('aria-hidden','true');
 }
 
 function sendModalWhats(){
-  const title=document.getElementById('modalTitle').textContent;
-  const msg=`Hola! Me interesa la propiedad "${title}".`;
-  window.open(`https://wa.me/50255551234?text=${encodeURIComponent(msg)}`, '_blank');
+  const title = document.getElementById('modalTitle').textContent;
+  const msg = `Hola! Me interesa la propiedad "${title}".`;
+  window.open(`https://wa.me/50212341234?text=${encodeURIComponent(msg)}`, '_blank');
 }
