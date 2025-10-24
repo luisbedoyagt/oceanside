@@ -1,66 +1,153 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Escapa al Paraíso - Alquiler de Casas en la Playa</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Escapa al Paraíso — Chalets en la playa</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="overlay">
-      <h1>Escapa al Paraíso</h1>
-      <p>Casas, villas y chalets frente al mar</p>
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Buscar destino o casa...">
-        <button onclick="buscarCasa()">Buscar</button>
+  <!-- NAV -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <div class="brand">Escapa<span class="accent">AlParaíso</span></div>
+
+      <button id="btn-toggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+
+      <nav id="main-nav" class="nav">
+        <a href="#home" class="nav-link">Inicio</a>
+        <a href="#propiedades" class="nav-link">Propiedades</a>
+        <a href="#video" class="nav-link">Video</a>
+        <a href="#cotizador" class="nav-link">Cotizador</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a id="whatsappTop" class="btn btn-cta" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </header>
 
-  <main>
-    <h2 class="titulo-seccion">Explora Nuestras Propiedades</h2>
-    <section id="catalogo" class="catalogo">
-      <div class="card" data-nombre="Casa del Sol" data-destino="Cancún">
-        <img src="img/casa1.jpg" alt="Casa del Sol">
-        <h2>Casa del Sol</h2>
-        <p>Cancún, México</p>
-        <span>$250 / noche</span>
-        <button class="btn-detalle" onclick="mostrarDetalle('Casa del Sol', 'Cancún', '$250 / noche', 'img/casa1.jpg')">Ver más</button>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <h1>Casas y chalets frente al mar</h1>
+        <p class="lead">Escoge tu casa, mira el video, verifica el mapa y recibe un presupuesto al instante por WhatsApp.</p>
+        <div class="hero-cta">
+          <a href="#propiedades" class="btn">Ver propiedades</a>
+          <a href="#cotizador" class="btn btn-ghost">Cotizar ahora</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="img/hero.jpg" alt="Playa" class="hero-img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPERTIES -->
+  <section id="propiedades" class="section">
+    <div class="container">
+      <h2 class="section-title">Nuestras 4 casas</h2>
+      <p class="section-sub">Todas con vistas increíbles y a pocos pasos de la playa.</p>
+
+      <div id="propList" class="grid-3"></div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Mira el destino</h2>
+      <p class="section-sub">Un breve video para sentir la brisa.</p>
+
+      <div class="video-wrap">
+        <!-- Cambia el src por tu video de YouTube -->
+        <iframe id="promoVideo" src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Video promocional" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- COTIZADOR -->
+  <section id="cotizador" class="section">
+    <div class="container">
+      <h2 class="section-title">Cotizador rápido</h2>
+      <p class="section-sub">Obtén un presupuesto instantáneo y envíalo a WhatsApp.</p>
+
+      <form id="quoteForm" class="quote-form" onsubmit="return false;">
+        <label>Selecciona propiedad:
+          <select id="selProp"></select>
+        </label>
+
+        <label>Noches:
+          <input id="inpNights" type="number" min="1" value="1" />
+        </label>
+
+        <label>Huéspedes:
+          <input id="inpGuests" type="number" min="1" value="2" />
+        </label>
+
+        <div class="quote-row">
+          <div class="quote-result">
+            <strong>Total estimado:</strong>
+            <div id="totalPrice" class="price">—</div>
+            <div id="priceBreak" class="muted small">—</div>
+          </div>
+
+          <div class="quote-actions">
+            <button id="btnCalc" class="btn">Calcular</button>
+            <button id="btnWhats" class="btn btn-cta">Enviar por WhatsApp</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contacto" class="section section-alt">
+    <div class="container contact-grid">
+      <div>
+        <h3>Contacto</h3>
+        <p>Teléfono: <a href="tel:+50255551234">+502 5555 1234</a></p>
+        <p>WhatsApp: <a id="whLink" href="#" target="_blank" rel="noopener">+502 5555 1234</a></p>
+        <p>Email: <a href="mailto:reservas@escapaalparaiso.example">reservas@escapaalparaiso.example</a></p>
+        <p>Dirección: Playa Linda 123, Departamento de Sol</p>
       </div>
 
-      <div class="card" data-nombre="Villa Coral" data-destino="Tulum">
-        <img src="img/casa2.jpg" alt="Villa Coral">
-        <h2>Villa Coral</h2>
-        <p>Tulum, México</p>
-        <span>$320 / noche</span>
-        <button class="btn-detalle" onclick="mostrarDetalle('Villa Coral', 'Tulum', '$320 / noche', 'img/casa2.jpg')">Ver más</button>
+      <div>
+        <h3>Horario</h3>
+        <p>Lun - Dom: 08:00 - 20:00</p>
+        <h3>Síguenos</h3>
+        <p class="muted small">En redes puedes colocar tus links reales</p>
       </div>
+    </div>
+  </section>
 
-      <div class="card" data-nombre="Playa Azul" data-destino="Acapulco">
-        <img src="img/casa3.jpg" alt="Playa Azul">
-        <h2>Playa Azul</h2>
-        <p>Acapulco, México</p>
-        <span>$180 / noche</span>
-        <button class="btn-detalle" onclick="mostrarDetalle('Playa Azul', 'Acapulco', '$180 / noche', 'img/casa3.jpg')">Ver más</button>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>© <span id="currentYear"></span> Escapa al Paraíso</div>
+      <div class="footer-links">
+        <a href="#propiedades">Propiedades</a>
+        <a href="#contacto">Contacto</a>
       </div>
-    </section>
-  </main>
+    </div>
+  </footer>
 
-  <!-- Modal Detalle -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="cerrarModal()">&times;</span>
-      <img id="modal-img" src="" alt="Imagen de la casa">
-      <h2 id="modal-nombre"></h2>
-      <p id="modal-destino"></p>
-      <span id="modal-precio"></span>
+  <!-- DETAIL MODAL -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button id="modalClose" class="modal-close" aria-label="Cerrar">✕</button>
+      <img id="modalImg" src="" alt="Imagen propiedad" />
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <p class="muted small" id="modalLocation"></p>
+      <div class="modal-actions">
+        <a id="mapLink" class="btn btn-ghost" target="_blank" rel="noopener">Abrir en Maps</a>
+        <button id="modalWhats" class="btn btn-cta">Enviar presupuesto por WhatsApp</button>
+      </div>
     </div>
   </div>
-
-  <footer>
-    <p>© 2025 Escapa al Paraíso. Diseñado con 🌴 y ☀️</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
