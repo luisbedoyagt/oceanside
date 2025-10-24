@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Escapa a Ocean Side — Chalets en la playa</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- NAV -->
   <header class="site-header">
     <div class="container nav-wrap">
       <div class="brand">Escapa<span class="accent">Ocean Side</span></div>
+
       <button id="btn-toggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+
       <nav id="main-nav" class="nav">
         <a href="#home" class="nav-link">Inicio</a>
         <a href="#propiedades" class="nav-link">Propiedades</a>
@@ -20,8 +21,11 @@
         <a href="#cotizador" class="nav-link">Cotizador</a>
         <a href="#contacto" class="nav-link">Contacto</a>
       </nav>
+
       <div class="nav-actions">
-        <a id="whatsappTop" class="btn btn-cta" target="_blank" rel="noopener">WhatsApp</a>
+        <a id="whatsappTop" class="btn btn-cta" target="_blank" rel="noopener">
+          <img src="img/whatsapp-icon.png" alt="WhatsApp" class="icon-whatsapp"> WhatsApp
+        </a>
       </div>
     </div>
   </header>
@@ -44,49 +48,58 @@
   </section>
 
   <!-- PROPERTIES -->
-  <section id="propiedades" class="section section-highlight">
+  <section id="propiedades" class="section">
     <div class="container">
       <h2 class="section-title">Nuestras 4 casas</h2>
       <p class="section-sub">Todas con vistas increíbles y a pocos pasos de la playa.</p>
-      <div id="propList" class="grid-4"></div>
+
+      <div id="propList" class="grid-3"></div>
     </div>
   </section>
 
   <!-- VIDEO -->
-  <section id="video" class="section section-alt section-highlight">
-    <div class="container text-center">
+  <section id="video" class="section section-alt">
+    <div class="container">
       <h2 class="section-title">Mira el destino</h2>
       <p class="section-sub">Un breve video para sentir la brisa.</p>
+
       <div class="video-wrap">
-        <iframe id="promoVideo" src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Video promocional" frameborder="0" allowfullscreen></iframe>
+        <iframe id="promoVideo" src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Video promocional" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </section>
 
   <!-- COTIZADOR -->
-  <section id="cotizador" class="section section-highlight">
-    <div class="container text-center">
+  <section id="cotizador" class="section">
+    <div class="container">
       <h2 class="section-title">Cotizador rápido</h2>
       <p class="section-sub">Obtén un presupuesto instantáneo y envíalo a WhatsApp.</p>
+
       <form id="quoteForm" class="quote-form" onsubmit="return false;">
         <label>Selecciona propiedad:
           <select id="selProp"></select>
         </label>
+
         <label>Noches:
           <input id="inpNights" type="number" min="1" value="1" />
         </label>
+
         <label>Huéspedes:
           <input id="inpGuests" type="number" min="1" value="2" />
         </label>
+
         <div class="quote-row">
           <div class="quote-result">
             <strong>Total estimado:</strong>
             <div id="totalPrice" class="price">—</div>
             <div id="priceBreak" class="muted small">—</div>
           </div>
+
           <div class="quote-actions">
             <button id="btnCalc" class="btn">Calcular</button>
-            <button id="btnWhats" class="btn btn-cta">Enviar por WhatsApp</button>
+            <button id="btnWhats" class="btn btn-cta">
+              <img src="img/whatsapp-icon.png" alt="WhatsApp" class="icon-whatsapp"> Enviar por WhatsApp
+            </button>
           </div>
         </div>
       </form>
@@ -94,15 +107,20 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contacto" class="section section-alt text-center section-highlight">
+  <section id="contacto" class="section section-alt">
     <div class="container contact-grid">
       <div>
         <h3>Contacto</h3>
         <p>Teléfono: <a href="tel:+50255551234">+502 5555 1234</a></p>
-        <p>WhatsApp: <a id="whLink" href="#" target="_blank" rel="noopener">+502 5555 1234</a></p>
+        <p>WhatsApp: 
+          <a id="whLink" href="#" target="_blank" rel="noopener">
+            <img src="img/whatsapp-icon.png" alt="WhatsApp" class="icon-whatsapp"> +502 5555 1234
+          </a>
+        </p>
         <p>Email: <a href="mailto:reservas@escapaalparaiso.example">reservas@escapaalparaiso.example</a></p>
         <p>Dirección: Playa Linda 123, Departamento de Sol</p>
       </div>
+
       <div>
         <h3>Horario</h3>
         <p>Lun - Dom: 08:00 - 20:00</p>
@@ -113,7 +131,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="site-footer text-center">
+  <footer class="site-footer">
     <div class="container">
       <div>© <span id="currentYear"></span> Escapa al Paraíso</div>
       <div class="footer-links">
@@ -122,6 +140,23 @@
       </div>
     </div>
   </footer>
+
+  <!-- DETAIL MODAL -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button id="modalClose" class="modal-close" aria-label="Cerrar">✕</button>
+      <img id="modalImg" src="" alt="Imagen propiedad" />
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <p class="muted small" id="modalLocation"></p>
+      <div class="modal-actions">
+        <a id="mapLink" class="btn btn-ghost" target="_blank" rel="noopener">Abrir en Maps</a>
+        <button id="modalWhats" class="btn btn-cta">
+          <img src="img/whatsapp-icon.png" alt="WhatsApp" class="icon-whatsapp"> Enviar presupuesto por WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
