@@ -11,8 +11,8 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <div class="brand">
-        <img src="img/logo.png" alt="Ocean Side" class="brand-logo" />
-        Escapa a<span class="accent">Ocean Side</span>
+        <img src="img/logo.png" alt="Ocean Side" class="logo" />
+        Escapa a <span class="accent">Ocean Side</span>
       </div>
 
       <button id="btn-toggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
@@ -27,17 +27,27 @@
 
       <div class="nav-actions">
         <a id="whatsappTop" class="btn btn-cta" target="_blank" rel="noopener">
-          <img src="img/logo.png" alt="WhatsApp" class="wh-icon" /> WhatsApp
+          <img src="img/whatsapp-icon.png" alt="WhatsApp" class="wh-icon" /> WhatsApp
         </a>
       </div>
     </div>
   </header>
+
+  <!-- HERO / SLIDER -->
+  <section class="hero">
+    <div class="hero-slider">
+      <div class="slide"><img src="img/hero1.jpg" alt="Vista 1"></div>
+      <div class="slide"><img src="img/hero2.jpg" alt="Vista 2"></div>
+      <div class="slide"><img src="img/hero3.jpg" alt="Vista 3"></div>
+    </div>
+  </section>
 
   <!-- PROPERTIES -->
   <section id="propiedades" class="section">
     <div class="container text-center">
       <h2 class="section-title">Nuestras 4 casas</h2>
       <p class="section-sub">Todas con vistas increíbles y a pocos pasos de la playa.</p>
+
       <div id="propList" class="grid-3"></div>
     </div>
   </section>
@@ -47,6 +57,7 @@
     <div class="container text-center">
       <h2 class="section-title">Mira el destino</h2>
       <p class="section-sub">Un breve video para sentir la brisa.</p>
+
       <div class="video-wrap">
         <iframe id="promoVideo" src="https://www.youtube.com/embed/soHylEfbfh0" title="Video promocional" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
@@ -58,13 +69,16 @@
     <div class="container text-center">
       <h2 class="section-title">Cotizador rápido</h2>
       <p class="section-sub">Obtén un presupuesto instantáneo y envíalo a WhatsApp.</p>
+
       <form id="quoteForm" class="quote-form" onsubmit="return false;">
         <label>Selecciona propiedad:
           <select id="selProp"></select>
         </label>
+
         <label>Noches:
           <input id="inpNights" type="number" min="1" value="1" />
         </label>
+
         <label>Huéspedes:
           <input id="inpGuests" type="number" min="1" value="2" />
         </label>
@@ -75,10 +89,11 @@
             <div id="totalPrice" class="price">—</div>
             <div id="priceBreak" class="muted small">—</div>
           </div>
+
           <div class="quote-actions">
             <button id="btnCalc" class="btn btn-primary">Calcular</button>
             <button id="btnWhats" class="btn btn-cta">
-              <img src="img/logo.png" alt="WhatsApp" class="wh-icon" /> Enviar por WhatsApp
+              <img src="img/whatsapp-icon.png" alt="WhatsApp" class="wh-icon" /> Enviar por WhatsApp
             </button>
           </div>
         </div>
@@ -96,6 +111,7 @@
         <p>Email: <a href="mailto:reservas@oceanside.example">reservas@oceanside.example</a></p>
         <p>Dirección: Monterrico, Guatemala</p>
       </div>
+
       <div>
         <h3>Horario</h3>
         <p>Lun - Dom: 08:00 - 17:00</p>
@@ -120,18 +136,20 @@
   <div id="modal" class="modal" aria-hidden="true">
     <div class="modal-inner">
       <button id="modalClose" class="modal-close-btn">CERRAR</button>
+      
       <div class="modal-carousel">
         <button id="prevImg" class="carousel-btn">&#8249;</button>
         <img id="modalImg" src="" alt="Imagen propiedad" />
         <button id="nextImg" class="carousel-btn">&#8250;</button>
       </div>
+
       <h3 id="modalTitle"></h3>
       <p id="modalDesc"></p>
       <p class="muted small" id="modalLocation"></p>
       <div class="modal-actions">
         <a id="mapLink" class="btn btn-secondary" target="_blank" rel="noopener">Abrir en Maps</a>
         <button id="modalWhats" class="btn btn-cta">
-          <img src="img/logo.png" alt="WhatsApp" class="wh-icon" /> Enviar presupuesto
+          <img src="img/whatsapp-icon.png" alt="WhatsApp" class="wh-icon" /> Enviar presupuesto
         </button>
       </div>
     </div>
