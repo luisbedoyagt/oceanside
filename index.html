@@ -1,88 +1,153 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chalets del Paraíso</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://kit.fontawesome.com/a2d9b6b0da.js" crossorigin="anonymous"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Escapa al Paraíso — Chalets en la playa</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>🏖️ Chalets del Paraíso</h1>
-    <nav>
-      <ul>
-        <li><a href="#casas">Casas</a></li>
-        <li><a href="#video">Video</a></li>
-        <li><a href="#mapa">Ubicación</a></li>
-        <li><a href="#cotizador">Cotizador</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
+  <!-- NAV -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <div class="brand">Escapa<span class="accent">AlParaíso</span></div>
+
+      <button id="btn-toggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+
+      <nav id="main-nav" class="nav">
+        <a href="#home" class="nav-link">Inicio</a>
+        <a href="#propiedades" class="nav-link">Propiedades</a>
+        <a href="#video" class="nav-link">Video</a>
+        <a href="#cotizador" class="nav-link">Cotizador</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a id="whatsappTop" class="btn btn-cta" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
   </header>
 
-  <section class="hero">
-    <h2>Tu descanso ideal frente al mar</h2>
-    <p>Encuentra tu casa de vacaciones perfecta en la costa.</p>
-    <a href="#cotizador" class="btn">Cotiza tu estadía</a>
-  </section>
-
-  <section id="casas" class="casas">
-    <h2>Nuestras 4 Casas</h2>
-    <div class="grid-casas">
-      <div class="casa">
-        <img src="img/casa1.jpg" alt="Casa del Sol">
-        <h3>Casa del Sol</h3>
-        <p>Vista al mar, piscina privada y terraza.</p>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <h1>Casas y chalets frente al mar</h1>
+        <p class="lead">Escoge tu casa, mira el video, verifica el mapa y recibe un presupuesto al instante por WhatsApp.</p>
+        <div class="hero-cta">
+          <a href="#propiedades" class="btn">Ver propiedades</a>
+          <a href="#cotizador" class="btn btn-ghost">Cotizar ahora</a>
+        </div>
       </div>
-      <div class="casa">
-        <img src="img/casa2.jpg" alt="Villa Coral">
-        <h3>Villa Coral</h3>
-        <p>Ambiente romántico con acceso directo a la playa.</p>
-      </div>
-      <div class="casa">
-        <img src="img/casa3.jpg" alt="Palmeras">
-        <h3>Palmeras</h3>
-        <p>Amplio jardín tropical y cocina gourmet.</p>
-      </div>
-      <div class="casa">
-        <img src="img/casa4.jpg" alt="Brisa Marina">
-        <h3>Brisa Marina</h3>
-        <p>Perfecta para grupos, con zona BBQ y jacuzzi.</p>
+      <div class="hero-right">
+        <img src="img/hero.jpg" alt="Playa" class="hero-img" />
       </div>
     </div>
   </section>
 
-  <section id="video" class="video">
-    <h2>Explora el Paraíso</h2>
-    <video controls poster="img/playa.jpg">
-      <source src="videos/playa.mp4" type="video/mp4">
-      Tu navegador no soporta videos.
-    </video>
+  <!-- PROPERTIES -->
+  <section id="propiedades" class="section">
+    <div class="container">
+      <h2 class="section-title">Nuestras 4 casas</h2>
+      <p class="section-sub">Todas con vistas increíbles y a pocos pasos de la playa.</p>
+
+      <div id="propList" class="grid-3"></div>
+    </div>
   </section>
 
-  <section id="mapa" class="mapa">
-    <h2>Ubicación</h2>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.279895173!2d-74.2598756878712!3d40.69767006783544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDQxJzUyLjAiTiA3NMKwMTUnMTQuMCJX!5e0!3m2!1ses!2s!4v1700000000000" 
-      width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  <!-- VIDEO -->
+  <section id="video" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Mira el destino</h2>
+      <p class="section-sub">Un breve video para sentir la brisa.</p>
+
+      <div class="video-wrap">
+        <!-- Cambia el src por tu video de YouTube -->
+        <iframe id="promoVideo" src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Video promocional" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
   </section>
 
-  <section id="cotizador" class="cotizador">
-    <h2>Cotiza tu estancia</h2>
-    <p>Haz clic para calcular el precio de tu próxima escapada.</p>
-    <a href="https://tu-cotizador.com" target="_blank" class="btn">Ir al cotizador</a>
+  <!-- COTIZADOR -->
+  <section id="cotizador" class="section">
+    <div class="container">
+      <h2 class="section-title">Cotizador rápido</h2>
+      <p class="section-sub">Obtén un presupuesto instantáneo y envíalo a WhatsApp.</p>
+
+      <form id="quoteForm" class="quote-form" onsubmit="return false;">
+        <label>Selecciona propiedad:
+          <select id="selProp"></select>
+        </label>
+
+        <label>Noches:
+          <input id="inpNights" type="number" min="1" value="1" />
+        </label>
+
+        <label>Huéspedes:
+          <input id="inpGuests" type="number" min="1" value="2" />
+        </label>
+
+        <div class="quote-row">
+          <div class="quote-result">
+            <strong>Total estimado:</strong>
+            <div id="totalPrice" class="price">—</div>
+            <div id="priceBreak" class="muted small">—</div>
+          </div>
+
+          <div class="quote-actions">
+            <button id="btnCalc" class="btn">Calcular</button>
+            <button id="btnWhats" class="btn btn-cta">Enviar por WhatsApp</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </section>
 
-  <section id="contacto" class="contacto">
-    <h2>Contacto</h2>
-    <p>¿Tienes dudas? Escríbenos directamente por WhatsApp.</p>
-    <a href="https://wa.me/50255555555" target="_blank" class="btn whatsapp"><i class="fab fa-whatsapp"></i> Chatear</a>
-    <p>O envíanos un correo a: <strong>info@chaletsdelparaiso.com</strong></p>
+  <!-- CONTACT -->
+  <section id="contacto" class="section section-alt">
+    <div class="container contact-grid">
+      <div>
+        <h3>Contacto</h3>
+        <p>Teléfono: <a href="tel:+50255551234">+502 5555 1234</a></p>
+        <p>WhatsApp: <a id="whLink" href="#" target="_blank" rel="noopener">+502 5555 1234</a></p>
+        <p>Email: <a href="mailto:reservas@escapaalparaiso.example">reservas@escapaalparaiso.example</a></p>
+        <p>Dirección: Playa Linda 123, Departamento de Sol</p>
+      </div>
+
+      <div>
+        <h3>Horario</h3>
+        <p>Lun - Dom: 08:00 - 20:00</p>
+        <h3>Síguenos</h3>
+        <p class="muted small">En redes puedes colocar tus links reales</p>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Chalets del Paraíso | Todos los derechos reservados</p>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>© <span id="currentYear"></span> Escapa al Paraíso</div>
+      <div class="footer-links">
+        <a href="#propiedades">Propiedades</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
   </footer>
+
+  <!-- DETAIL MODAL -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button id="modalClose" class="modal-close" aria-label="Cerrar">✕</button>
+      <img id="modalImg" src="" alt="Imagen propiedad" />
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <p class="muted small" id="modalLocation"></p>
+      <div class="modal-actions">
+        <a id="mapLink" class="btn btn-ghost" target="_blank" rel="noopener">Abrir en Maps</a>
+        <button id="modalWhats" class="btn btn-cta">Enviar presupuesto por WhatsApp</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
