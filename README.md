@@ -1,2 +1,0 @@
-# oceansides
-Chalets en Guatemala
