@@ -10,10 +10,7 @@
   <!-- NAV -->
   <header class="site-header">
     <div class="container nav-wrap">
-      <div class="brand">
-        <img src="img/logo.png" alt="Ocean Side" class="logo" />
-        Escapa a <span class="accent">Ocean Side</span>
-      </div>
+      <div class="brand">Escapa a<span class="accent">Ocean Side</span></div>
 
       <button id="btn-toggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
 
@@ -33,12 +30,22 @@
     </div>
   </header>
 
-  <!-- HERO / SLIDER -->
-  <section class="hero">
-    <div class="hero-slider">
-      <div class="slide"><img src="img/hero1.jpg" alt="Vista 1"></div>
-      <div class="slide"><img src="img/hero2.jpg" alt="Vista 2"></div>
-      <div class="slide"><img src="img/hero3.jpg" alt="Vista 3"></div>
+  <!-- SLIDER PRINCIPAL -->
+  <section class="hero-slider">
+    <div class="slider-container">
+      <img src="img/slide1.jpg" class="slider-img active" alt="Slide 1">
+      <img src="img/slide2.jpg" class="slider-img" alt="Slide 2">
+      <img src="img/slide3.jpg" class="slider-img" alt="Slide 3">
+      <img src="img/slide4.jpg" class="slider-img" alt="Slide 4">
+
+      <div class="slider-overlay">
+        <img src="img/logo.png" alt="Logo Ocean Side" class="slider-logo">
+        <h1 class="slider-title">Escapa a Ocean Side</h1>
+        <p class="slider-subtitle">Chalets en la playa con vistas increíbles</p>
+      </div>
+
+      <button class="slider-btn prev">&#8249;</button>
+      <button class="slider-btn next">&#8250;</button>
     </div>
   </section>
 
