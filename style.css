@@ -1,0 +1,205 @@
+/* --- Estilos generales --- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* --- Encabezado --- */
+header {
+  background: url('img/playa.jpg') center/cover no-repeat;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+header .overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border-radius: 15px;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+header p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* --- Buscador --- */
+.search-box {
+  display: inline-flex;
+  background: white;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.search-box input {
+  border: none;
+  padding: 10px 15px;
+  outline: none;
+  width: 220px;
+}
+
+.search-box button {
+  background: #00a6a6;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.search-box button:hover {
+  background: #008c8c;
+}
+
+/* --- Catálogo --- */
+.catalogo {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 40px 10px;
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 280px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card h2 {
+  margin: 10px 0 5px;
+}
+
+.card p {
+  margin: 0;
+  color: #777;
+}
+
+.card span {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+  color: #00a6a6;
+}
+
+.btn-detalle {
+  background: #00a6a6;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-detalle:hover {
+  background: #008c8c;
+}
+
+/* --- Modal --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.modal-content h2 {
+  margin: 10px 0;
+}
+
+.modal-content p {
+  color: #555;
+}
+
+.modal-content span {
+  display: block;
+  color: #00a6a6;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.close:hover {
+  color: #00a6a6;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #003f5c;
+  color: white;
+}
+
+/* --- Responsivo --- */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .search-box input {
+    width: 150px;
+  }
+
+  .catalogo {
+    flex-direction: column;
+    align-items: center;
+  }
+}
