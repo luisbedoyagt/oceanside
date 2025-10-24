@@ -1,3 +1,4 @@
+// PROPIEDADES
 const properties = [
   {id:'p1',title:'Chalet Vista Sol',location:'Playa Linda',lat:14.6205,lng:-90.5280,pricePerNight:120, imgs:['img/casa1.jpg','img/casa1-2.jpg','img/casa1-3.jpg'],desc:'Terraza con vista al mar, 3 hab, piscina pequeña y parrilla.'},
   {id:'p2',title:'Casa Brisa Marina',location:'Costa Dorada',lat:14.6220,lng:-90.5345,pricePerNight:200, imgs:['img/casa2.jpg','img/casa2-2.jpg'],desc:'Piscina privada, jardín amplio y cocina equipada.'},
@@ -55,13 +56,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('prevImg').addEventListener('click',()=>changeImg(-1));
   document.getElementById('nextImg').addEventListener('click',()=>changeImg(1));
 
-  // Hero slider automático
-  let currentSlide=0;
-  const slides=document.querySelectorAll('.hero-slider .slide');
-  setInterval(()=>{
-    currentSlide=(currentSlide+1)%slides.length;
-    document.querySelector('.hero-slider').style.transform=`translateX(-${currentSlide*100}%)`;
-  },4000);
+  initSlider();
 });
 
 function mapUrl(lat,lng){return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;}
@@ -117,4 +112,41 @@ function sendModalWhats(){
   const title=document.getElementById('modalTitle').textContent;
   const msg=`Hola! Me interesa la propiedad "${title}".`;
   window.open(`https://wa.me/50255551234?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// SLIDER
+let slides,slideIndex,slideInterval;
+function initSlider(){
+  slides=document.querySelectorAll('.slider-img');
+  slideIndex=0;
+  showSlide(slideIndex);
+  slideInterval=setInterval(nextSlide,5000);
+
+  document.querySelector('.slider-btn.prev').addEventListener('click',()=>{
+    prevSlide();
+    resetInterval();
+  });
+  document.querySelector('.slider-btn.next').addEventListener('click',()=>{
+    nextSlide();
+    resetInterval();
+  });
+}
+
+function showSlide(index){
+  slides.forEach((s,i)=>s.classList.toggle('active',i===index));
+}
+
+function nextSlide(){
+  slideIndex=(slideIndex+1)%slides.length;
+  showSlide(slideIndex);
+}
+
+function prevSlide(){
+  slideIndex=(slideIndex-1+slides.length)%slides.length;
+  showSlide(slideIndex);
+}
+
+function resetInterval(){
+  clearInterval(slideInterval);
+  slideInterval=setInterval(nextSlide,5000);
 }
