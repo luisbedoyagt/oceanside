@@ -24,7 +24,7 @@
 
       <div class="nav-actions">
         <a id="whatsappTop" class="btn btn-cta" target="_blank" rel="noopener">
-          <img src="img/whatsapp-icon.png" alt="WhatsApp" class="icon-whatsapp"> WhatsApp
+          <img src="img/whatsapp-icon.png" alt="WhatsApp" class="wh-icon" /> WhatsApp
         </a>
       </div>
     </div>
@@ -37,8 +37,8 @@
         <h1>Casas y chalets frente al mar</h1>
         <p class="lead">Escoge tu casa, mira el video, verifica el mapa y recibe un presupuesto al instante por WhatsApp.</p>
         <div class="hero-cta">
-          <a href="#propiedades" class="btn">Ver propiedades</a>
-          <a href="#cotizador" class="btn btn-ghost">Cotizar ahora</a>
+          <a href="#propiedades" class="btn btn-primary">Ver propiedades</a>
+          <a href="#cotizador" class="btn btn-secondary">Cotizar ahora</a>
         </div>
       </div>
       <div class="hero-right">
@@ -49,7 +49,7 @@
 
   <!-- PROPERTIES -->
   <section id="propiedades" class="section">
-    <div class="container">
+    <div class="container text-center">
       <h2 class="section-title">Nuestras 4 casas</h2>
       <p class="section-sub">Todas con vistas increíbles y a pocos pasos de la playa.</p>
 
@@ -59,7 +59,7 @@
 
   <!-- VIDEO -->
   <section id="video" class="section section-alt">
-    <div class="container">
+    <div class="container text-center">
       <h2 class="section-title">Mira el destino</h2>
       <p class="section-sub">Un breve video para sentir la brisa.</p>
 
@@ -71,7 +71,7 @@
 
   <!-- COTIZADOR -->
   <section id="cotizador" class="section">
-    <div class="container">
+    <div class="container text-center">
       <h2 class="section-title">Cotizador rápido</h2>
       <p class="section-sub">Obtén un presupuesto instantáneo y envíalo a WhatsApp.</p>
 
@@ -96,9 +96,9 @@
           </div>
 
           <div class="quote-actions">
-            <button id="btnCalc" class="btn">Calcular</button>
+            <button id="btnCalc" class="btn btn-primary">Calcular</button>
             <button id="btnWhats" class="btn btn-cta">
-              <img src="img/whatsapp-icon.png" alt="WhatsApp" class="icon-whatsapp"> Enviar por WhatsApp
+              <img src="img/whatsapp-icon.png" alt="WhatsApp" class="wh-icon" /> Enviar por WhatsApp
             </button>
           </div>
         </div>
@@ -108,15 +108,11 @@
 
   <!-- CONTACT -->
   <section id="contacto" class="section section-alt">
-    <div class="container contact-grid">
+    <div class="container contact-grid text-center">
       <div>
         <h3>Contacto</h3>
         <p>Teléfono: <a href="tel:+50255551234">+502 5555 1234</a></p>
-        <p>WhatsApp: 
-          <a id="whLink" href="#" target="_blank" rel="noopener">
-            <img src="img/whatsapp-icon.png" alt="WhatsApp" class="icon-whatsapp"> +502 5555 1234
-          </a>
-        </p>
+        <p>WhatsApp: <a id="whLink" href="#" target="_blank" rel="noopener">+502 5555 1234</a></p>
         <p>Email: <a href="mailto:reservas@escapaalparaiso.example">reservas@escapaalparaiso.example</a></p>
         <p>Dirección: Playa Linda 123, Departamento de Sol</p>
       </div>
@@ -141,7 +137,7 @@
     </div>
   </footer>
 
-  <!-- DETAIL MODAL -->
+  <!-- MODAL -->
   <div id="modal" class="modal" aria-hidden="true">
     <div class="modal-inner">
       <button id="modalClose" class="modal-close" aria-label="Cerrar">✕</button>
@@ -150,9 +146,9 @@
       <p id="modalDesc"></p>
       <p class="muted small" id="modalLocation"></p>
       <div class="modal-actions">
-        <a id="mapLink" class="btn btn-ghost" target="_blank" rel="noopener">Abrir en Maps</a>
+        <a id="mapLink" class="btn btn-secondary" target="_blank" rel="noopener">Abrir en Maps</a>
         <button id="modalWhats" class="btn btn-cta">
-          <img src="img/whatsapp-icon.png" alt="WhatsApp" class="icon-whatsapp"> Enviar presupuesto por WhatsApp
+          <img src="img/whatsapp-icon.png" alt="WhatsApp" class="wh-icon" /> Enviar presupuesto
         </button>
       </div>
     </div>
