@@ -1,8 +1,8 @@
 const properties = [
-  {id:'p1',location:'Playa Linda',lat:14.6205,lng:-90.5280,pricePerNight:120,img:'img/casa1.jpg',desc:'Terraza con vista al mar, 3 hab, piscina pequeña y parrilla.'},
-  {id:'p2',location:'Costa Dorada',lat:14.6220,lng:-90.5345,pricePerNight:200,img:'img/casa2.jpg',desc:'Piscina privada, jardín amplio y cocina equipada.'},
-  {id:'p3',location:'Bahía Azul',lat:14.6152,lng:-90.5201,pricePerNight:80,img:'img/casa3.jpg',desc:'Acogedora, ideal para parejas, a 1 minuto de la playa.'},
-  {id:'p4',location:'Rincón del Mar',lat:14.6300,lng:-90.5400,pricePerNight:320,img:'img/casa4.jpg',desc:'Lujo discreto: 4 hab, piscina infinita y servicio opcional.'}
+  {id:'p1',title:'Chalet Vista Sol',location:'Playa Linda',lat:14.6205,lng:-90.5280,pricePerNight:120,img:'img/casa1.jpg',desc:'Terraza con vista al mar, 3 hab, piscina pequeña y parrilla.'},
+  {id:'p2',title:'Casa Brisa Marina',location:'Costa Dorada',lat:14.6220,lng:-90.5345,pricePerNight:200,img:'img/casa2.jpg',desc:'Piscina privada, jardín amplio y cocina equipada.'},
+  {id:'p3',title:'Cabaña El Faro',location:'Bahía Azul',lat:14.6152,lng:-90.5201,pricePerNight:80,img:'img/casa3.jpg',desc:'Acogedora, ideal para parejas, a 1 minuto de la playa.'},
+  {id:'p4',title:'Villa Coral',location:'Rincón del Mar',lat:14.6300,lng:-90.5400,pricePerNight:320,img:'img/casa4.jpg',desc:'Lujo discreto: 4 hab, piscina infinita y servicio opcional.'}
 ];
 
 document.addEventListener('DOMContentLoaded',()=>{
