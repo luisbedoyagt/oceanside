@@ -11,9 +11,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <div class="brand">Escapa<span class="accent">Ocean Side</span></div>
-
       <button id="btn-toggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
-
       <nav id="main-nav" class="nav">
         <a href="#home" class="nav-link">Inicio</a>
         <a href="#propiedades" class="nav-link">Propiedades</a>
@@ -21,7 +19,6 @@
         <a href="#cotizador" class="nav-link">Cotizador</a>
         <a href="#contacto" class="nav-link">Contacto</a>
       </nav>
-
       <div class="nav-actions">
         <a id="whatsappTop" class="btn btn-cta" target="_blank" rel="noopener">
           <img src="img/whatsapp-icon.png" alt="WhatsApp" class="wh-icon" /> WhatsApp
@@ -30,14 +27,11 @@
     </div>
   </header>
 
- 
-
   <!-- PROPERTIES -->
   <section id="propiedades" class="section">
     <div class="container text-center">
       <h2 class="section-title">Nuestras 4 casas</h2>
       <p class="section-sub">Todas con vistas increíbles y a pocos pasos de la playa.</p>
-
       <div id="propList" class="grid-3"></div>
     </div>
   </section>
@@ -47,7 +41,6 @@
     <div class="container text-center">
       <h2 class="section-title">Mira el destino</h2>
       <p class="section-sub">Un breve video para sentir la brisa.</p>
-
       <div class="video-wrap">
         <iframe id="promoVideo" src="https://www.youtube.com/embed/soHylEfbfh0" title="Video promocional" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
@@ -59,27 +52,22 @@
     <div class="container text-center">
       <h2 class="section-title">Cotizador rápido</h2>
       <p class="section-sub">Obtén un presupuesto instantáneo y envíalo a WhatsApp.</p>
-
       <form id="quoteForm" class="quote-form" onsubmit="return false;">
         <label>Selecciona propiedad:
           <select id="selProp"></select>
         </label>
-
         <label>Noches:
           <input id="inpNights" type="number" min="1" value="1" />
         </label>
-
         <label>Huéspedes:
           <input id="inpGuests" type="number" min="1" value="2" />
         </label>
-
         <div class="quote-row">
           <div class="quote-result">
             <strong>Total estimado:</strong>
             <div id="totalPrice" class="price">—</div>
             <div id="priceBreak" class="muted small">—</div>
           </div>
-
           <div class="quote-actions">
             <button id="btnCalc" class="btn btn-primary">Calcular</button>
             <button id="btnWhats" class="btn btn-cta">
@@ -101,7 +89,6 @@
         <p>Email: <a href="mailto:reservas@oceanside.example">reservas@oceanside.example</a></p>
         <p>Dirección: Monterrico, Guatemala</p>
       </div>
-
       <div>
         <h3>Horario</h3>
         <p>Lun - Dom: 08:00 - 17:00</p>
@@ -126,7 +113,14 @@
   <div id="modal" class="modal" aria-hidden="true">
     <div class="modal-inner">
       <button id="modalClose" class="modal-close" aria-label="Cerrar">✕</button>
-      <img id="modalImg" src="" alt="Imagen propiedad" />
+      
+      <!-- Carrusel -->
+      <div class="modal-carousel">
+        <button id="prevImg" class="btn-carousel">‹</button>
+        <img id="modalImg" src="" alt="Imagen propiedad" />
+        <button id="nextImg" class="btn-carousel">›</button>
+      </div>
+
       <h3 id="modalTitle"></h3>
       <p id="modalDesc"></p>
       <p class="muted small" id="modalLocation"></p>
