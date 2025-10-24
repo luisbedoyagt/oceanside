@@ -10,7 +10,6 @@
 
 *{box-sizing:border-box;}
 html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background:linear-gradient(180deg,#b2fefa,#f0fdfb); color:#04201a; -webkit-font-smoothing:antialiased;}
-
 .container{max-width:1200px;margin:0 auto;padding:0 20px;}
 .text-center{text-align:center;}
 
@@ -81,13 +80,19 @@ html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Seg
 .modal-inner img{width:100%;height:260px;object-fit:cover;border-radius:12px;margin-bottom:14px;}
 .modal-close{position:absolute;right:16px;top:16px;border:0;background:transparent;font-size:1.4rem;cursor:pointer;}
 
+/* Carrusel modal */
+.modal-carousel{position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.modal-carousel img{width:100%;height:260px;object-fit:cover;border-radius:12px;}
+.btn-carousel{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.3);border:none;color:white;font-size:2rem;padding:6px 12px;cursor:pointer;border-radius:6px;}
+#prevImg{left:10px;}
+#nextImg{right:10px;}
+
 /* RESPONSIVE */
 @media (max-width:1200px){.grid-3{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:700px){
   .grid-3{grid-template-columns:1fr;}
   .nav{display:none;position:absolute;left:0;right:0;top:60px;background:white;padding:12px;flex-direction:column;gap:6px;border-bottom:1px solid rgba(2,22,20,0.05);}
   .nav-toggle{display:block;}
-  .nav.open{display:flex;}
   .nav-actions{display:none;}
   .contact-grid{grid-template-columns:1fr;}
   .hero-grid{grid-template-columns:1fr;}
